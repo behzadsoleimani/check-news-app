@@ -26,9 +26,7 @@ export default function Header({ value, onChange }: { value: number, onChange: (
             width: "4rem"
           }} />
         </Stack>
-        <Tabs value={value} onChange={onChange} aria-label="basic tabs example" style={{
-          overflow: "auto"
-        }}>
+        <Tabs value={value} onChange={onChange} aria-label="basic tabs example" variant="scrollable">
           {tabList.map((tab: ITabPanel, index: number) => (
             <Tab key={index} label={tab.name} {...a11yProps(index)} />
           ))}
