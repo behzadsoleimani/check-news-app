@@ -21,17 +21,19 @@ export default function CardComponent({ data }: { data: INewsItem }) {
             <CardHeader
                 style={{
                     height: "20%",
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    margin: "1rem 0"
                 }}
 
                 title={<a 
+                    rel="noreferrer"
                     style={{
                         textDecoration: "none",
                         color: "rgba(0 , 0 ,0 , 0.87)"
                     }}
-                    href={data.url} target="_blank">{cutStr(data.title)}</a>}
+                    href={data.url} target="_blank" >{cutStr(data.title)}</a>}
             />
-            <a  href={data.url} target="_blank">
+            <a  href={data.url} target="_blank" rel="noreferrer">
             <CardMedia
                 component="img"
                 height="194"
