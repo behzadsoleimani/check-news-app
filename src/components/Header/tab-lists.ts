@@ -1,9 +1,9 @@
 export const tabList = [
     { name: "politics" },
     { name: "technology" },
-    { name: "sport" },
-    { name: "economy" },
+    { name: "sports" },
+    { name: "entertainment" },
     { name: "science" },
-    { name: "social" },
-    { name: "education" },
+    { name: "food" },
+    { name: "environment" },
 ]

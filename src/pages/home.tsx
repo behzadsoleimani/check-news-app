@@ -8,19 +8,17 @@ import { INewsItem } from "../types/shared"
 
 
 const Home = () => {
-
     const [news, setNews] = useState<INewsItem[]>();
     const [value, setValue] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(true);
     const getNews = () => {
         setLoading(true);
         setNews([])
-        return fetch(
-            `https://newsapi.org/v2/everything?q=${tabList[value].name || "politics"}&pageSize=10&apiKey=e35894b53c8d424387c2406d36370027`,
+        return fetch(`https://newsdata.io/api/1/news?category=${tabList[value].name}&page=1&language=en&apikey=pub_10284d8ed0f5f35c3af43cdc38776d61b9242`
         )
             .then(response => response.json())
             .then(response => {
-                setNews(response.articles);
+                setNews(response.results);
                 setLoading(false)
             });
     };

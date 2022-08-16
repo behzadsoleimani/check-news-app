@@ -31,13 +31,13 @@ export default function CardComponent({ data }: { data: INewsItem }) {
                         textDecoration: "none",
                         color: "rgba(0 , 0 ,0 , 0.87)"
                     }}
-                    href={data.url} target="_blank" >{cutStr(data.title)}</a>}
+                    href={data.link} target="_blank" >{cutStr(data.title)}</a>}
             />
-            <a  href={data.url} target="_blank" rel="noreferrer">
+            <a  href={data.link} target="_blank" rel="noreferrer">
             <CardMedia
                 component="img"
                 height="194"
-                image={data.urlToImage}
+                image={data.image_url}
                 alt={data.author}
                 style={{
                     cursor: "pointer"
@@ -62,7 +62,8 @@ export default function CardComponent({ data }: { data: INewsItem }) {
                     bottom: 10,
                     left: 5
                 }}>
-                    {new Date(data.publishedAt).toISOString().slice(0, 10)}
+                    {data.pubDate.split(" ")[0]}
+                    {/* {new Date(data.publishedAt).toISOString().slice(0, 10)} */}
                 </Typography>
             </CardActions>
         </Card>
