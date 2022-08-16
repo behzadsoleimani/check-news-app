@@ -9,13 +9,17 @@ import Typography from '@mui/material/Typography';
 import { INewsItem } from "../../types/shared"
 import { cutStr } from '../../utils/helper';
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
+import { useSelector } from 'react-redux';
+import { IGlobalState } from '../../redux/types';
 
 
 export default function CardComponent({ data }: { data: INewsItem }) {
+    const theme = useSelector((state: IGlobalState) => state.themeMode)
 
     return (
         <Card sx={{
-            maxWidth: 345, margin: "1rem", backgroundColor: "#fafafa",
+            maxWidth: 345, margin: "1rem",
+            backgroundColor: theme === "dark" ? "#baf29c" : "#cfebc0",
             position: "relative"
         }}>
             <CardHeader
@@ -25,7 +29,7 @@ export default function CardComponent({ data }: { data: INewsItem }) {
                     margin: "1rem 0"
                 }}
 
-                title={<a 
+                title={<a
                     rel="noreferrer"
                     style={{
                         textDecoration: "none",
@@ -33,16 +37,16 @@ export default function CardComponent({ data }: { data: INewsItem }) {
                     }}
                     href={data.link} target="_blank" >{cutStr(data.title)}</a>}
             />
-            <a  href={data.link} target="_blank" rel="noreferrer">
-            <CardMedia
-                component="img"
-                height="194"
-                image={data.image_url}
-                alt={data.author}
-                style={{
-                    cursor: "pointer"
-                }}
-            />
+            <a href={data.link} target="_blank" rel="noreferrer">
+                <CardMedia
+                    component="img"
+                    height="194"
+                    image={data.image_url}
+                    alt={data.author}
+                    style={{
+                        cursor: "pointer"
+                    }}
+                />
             </a>
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
