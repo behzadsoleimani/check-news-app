@@ -1,0 +1,13 @@
+.home-parent{
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #a7e3b2;
+&--complete{
+    height: unset;
+} 
+&--dark{
+    background-color: #44634a;
+}
+}

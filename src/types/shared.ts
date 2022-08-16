@@ -8,3 +8,8 @@ export interface INewsItem {
     link: string;
     pubDate: string;
 }
+
+export interface ICustomizedSwitches {
+    checked: boolean;
+    handleToggle: any
+}

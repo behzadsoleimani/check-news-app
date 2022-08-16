@@ -1,0 +1,33 @@
+
+.icon-header{
+    padding: 1rem;
+    position: fixed;
+    z-index: 99;
+    background: #f8fff8d1;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    &--darktheme {
+        background: #022013;
+
+    }
+}
+
+.tab-active{
+    color: #fff !important;
+}
+
+
+.header-tab{
+    &--container {
+        margin-top: 5rem;
+
+    
+    & > div > div{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+}
