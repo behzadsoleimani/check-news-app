@@ -39,11 +39,12 @@ export default function Header({ value, onChange }: { value: number, onChange: (
     }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Stack direction="row" spacing={2}
-          className={cx("icon-header", theme === "dark" ? "icon-header--darktheme" : "")}>
+          className={cx("icon-header", theme === "dark" ? "icon-header--darktheme" : "")}
+          >
           <Avatar alt="Behzad News" src="/logo192.png" style={{
             width: "4rem"
           }} />
-          <Switch handleToggle={handleToggle} checked={theme === "dark"} />
+          {/* <Switch handleToggle={handleToggle} checked={theme === "dark"} /> */}
         </Stack>
         <Tabs value={value} onChange={onChange} aria-label="basic tabs example" variant="scrollable"
           classes={{ root: cx("header-tab--container") }}
