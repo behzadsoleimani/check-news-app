@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Provider } from "react-redux";
-import Home from "./pages/home";
-import Explore from "./pages/explore";
-import Saved from "./pages/saved";
-import Profile from "./pages/profile";
-import store from "./redux/store";
+import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import NavBar from "./components/NavBar/NavBar";
+import News from "./components/News/News";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { router } from "./config/config";
+import LoadingBar from "react-top-loading-bar";
+import { IGlobalState } from './redux/types';
+
+import { useSelector } from 'react-redux';
 
 function App() {
+  const [progress, setProgress] = useState<any>(0);
+  const pageSize = 7;
+  const theme = useSelector((state: IGlobalState) => state.themeMode)
+
+
+  useEffect(() => {
+    document.body.style.backgroundColor = theme === "dark" ? "rgb(36, 39, 41)" : "#fff";
+
+  }, [theme])
   return (
-    <Provider store={store}>
-      <BrowserRouter basename="/">
+      <>
+      <Router>
+        <NavBar />
+        <LoadingBar color="#005abb" height={3} progress={progress} />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="Explore" element={<Explore />} />
-          <Route path="Saved" element={<Saved />} />
-          <Route path="Profile" element={<Profile />} />
+          {
+            router.map((path: any) =>
+              <Route
+                key={uuidv4()}
+                path={path.path}
+                element={
+                  <News
+                    setProgress={setProgress}
+                    key={path.key}
+                    category={path.category}
+                    pageSize={pageSize}
+                    country={path.country}
+                  />
+                }
+              />
+            )
+          }
         </Routes>
-      </BrowserRouter>
-    </Provider>
+      </Router>
+    </>
   );
 }
 
