@@ -1,7 +1,7 @@
 ### `Demo:`
 
 
-[behzad-news](https://https://behzad-news.netlify.app/)
+[behzad-news](https://behzad-news.netlify.app/)
 
 # Getting Started with Create React App
 
