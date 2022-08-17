@@ -10,6 +10,9 @@ const MaterialUISwitch = styled(Switch)(({ checked }: { checked: boolean }) => {
     width: 62,
     height: 34,
     padding: 7,
+    position: "absolute",
+    top: "20px",
+    right: "10px",
     '& .MuiSwitch-switchBase': {
       margin: 1,
       padding: 0,
@@ -54,7 +57,7 @@ const MaterialUISwitch = styled(Switch)(({ checked }: { checked: boolean }) => {
   })
 });
 
-export default function CustomizedSwitches({ handleToggle, checked }: ICustomizedSwitches) {
+export default function CustomizedSwitches({ handleToggle, checked}: ICustomizedSwitches) {
   return (
     <MaterialUISwitch onChange={handleToggle} checked={checked} />
   );
