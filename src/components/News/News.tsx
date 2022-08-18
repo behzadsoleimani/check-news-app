@@ -14,14 +14,16 @@ import { useSelector } from "react-redux";
 import { IGlobalState } from "../../redux/types";
 
 
- const Header = styled.h1`
+const Header = styled.h1`
     text-align: center;
+    font-style: italic;
+    font-size: 1.5rem;
     margin-top: 120px;
-    color: ${props => props.theme === "dark" ? "#fff": "#000"};
+    color: ${props => props.theme === "dark" ? "#fff" : "#000"};
     margin-bottom: 20px;
 `
 
- const Container = styled.div`
+const Container = styled.div`
     width: 93%;
     padding-right: (1.5rem, 0.75rem);
     padding-left: (1.5rem, 0.75rem);
@@ -65,7 +67,7 @@ function News(props: any) {
   }, []);
 
   const fetchMoreData = async () => {
-    const response = await axios.get(endpointPath(props.category , page+ 1));
+    const response = await axios.get(endpointPath(props.category, page + 1));
     setPage(page + 1);
     const parsedData = response.data;
     setArticles(articles.concat(parsedData.results));
@@ -74,11 +76,11 @@ function News(props: any) {
 
   return (
     <>
-    <Helmet>
-    <title>{capitaLize(props.category)} - Behzad News</title>
-    </Helmet>
+      <Helmet>
+        <title>{capitaLize(props.category)} - Behzad News</title>
+      </Helmet>
       <Header theme={theme}>
-        {header(capitaLize(props.category))}
+        {header(capitaLize(props.category.replace("top", "")))}
       </Header>
       {loading && <Spinner />}
       <InfiniteScroll
@@ -92,7 +94,8 @@ function News(props: any) {
             {articles.map((element: any) => {
               return (
                 <Col
-                  sm={12}
+                  xs={12}
+                  sm={6}
                   md={6}
                   lg={4}
                   xl={3}
@@ -105,7 +108,7 @@ function News(props: any) {
                   <NewsItem
                     title={element.title}
                     description={element.description}
-                    author={element.creator ? element.creator[0]: ""}
+                    author={element.creator ? element.creator[0] : ""}
                     pubDate={element.pubDate}
                     channel={element.source_id}
                     alt="Card image cap"
